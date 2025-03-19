@@ -176,17 +176,6 @@ table tbody tr {
     color: black;
 }
 
-/* Status Colors */
-.received {
-    color: green;
-    font-weight: bold;
-}
-
-.pending {
-    color: yellow;
-    font-weight: bold;
-}
-
 /* Checkbox Styling */
 input[type="checkbox"] {
     width: 20px;

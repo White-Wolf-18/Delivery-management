@@ -152,7 +152,7 @@ table tbody tr {
 }
 
 .pending {
-    color: rgb(156, 156, 0);
+    color: gold;
     font-weight: bold;
 }
 
@@ -161,4 +161,7 @@ input[type="checkbox"] {
     width: 20px;
     height: 20px;
     margin-left: 30px;
+}
+.complaints{
+    cursor: pointer;
 }

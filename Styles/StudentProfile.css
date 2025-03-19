@@ -42,4 +42,6 @@
     background-color: gray;
     size: 150%;
   }
-  
+  .complaints{
+    cursor: pointer;
+  }

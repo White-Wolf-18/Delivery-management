@@ -6,16 +6,18 @@ import StudentProfile from "./Pages/StudentProfile";
 import StaffProfile from "./Pages/StaffProfile";
 import LoginPage from "./Pages/LoginPage";
 import SignupPage from "./Pages/SignupPage";
+import StudentComplaints from "./Pages/StudentComplaints";
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<LoginPage />} />
+        <Route path="/" element={<StudentLandingPage />} />
         <Route path="/studentprofile" element={<StudentProfile />} />
         <Route path="/staffprofile" element={<StaffProfile />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
+        <Route path="/studentcomplaints" element={<StudentComplaints />} />
       </Routes>
     </Router>
   );

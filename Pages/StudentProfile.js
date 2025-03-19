@@ -1,7 +1,9 @@
 import "../Styles/StudentProfile.css";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const StudentProfile = () => {
+  const navigate = useNavigate();
   return (
     <div className="container">
       {/* Header Section */}
@@ -15,7 +17,7 @@ const StudentProfile = () => {
           <ul className="nav-links">
             <li><a href="/">HOME</a></li>
             <li><a href="#">ADD PARCEL</a></li>
-            <li><a href="#">COMPLAINTS</a></li>
+            <li><a className="complaints"onClick={() => navigate("/studentcomplaints")}>COMPLAINTS</a></li>
           </ul>
         </nav>
       </header>

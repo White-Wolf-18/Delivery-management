@@ -25,7 +25,7 @@ const StudentLandingPage = () => {
           <ul className="nav-links">
             <li><a href="#">HOME</a></li>
             <li><a href="#">ADD PARCEL</a></li>
-            <li><a href="#">COMPLAINTS</a></li>
+            <li><a className="complaints" onClick={() => navigate("/studentcomplaints")}>COMPLAINTS</a></li>
           </ul>
         </nav>
       </header>
