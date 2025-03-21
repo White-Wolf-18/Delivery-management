@@ -42,12 +42,12 @@
 }
 
 /* Content Section */
-.login-container {
+.signup-container {
     text-align: center;
   }
 
-/* Login Card */
-.login-card {
+/* Signup Card */
+.signup-card {
     background: #f8f8f8;
     padding: 20px;
     color: #000;
@@ -58,7 +58,7 @@
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
   }
   
-  .login-title {
+  .signup-title {
     font-size: 22px;
     font-weight: bold;
     margin-bottom: 15px;
@@ -140,8 +140,8 @@
     font-size: 14px;
   }
   
-  /* Login Button */
-  .login-button {
+  /* Signup Button */
+  .signup-button {
     width: 100%;
     padding: 10px;
     margin-top: 10px;
@@ -153,7 +153,7 @@
     cursor: pointer;
   }
   
-  .login-button:hover {
+  .signup-button:hover {
     background-color: #333;
   }
   
