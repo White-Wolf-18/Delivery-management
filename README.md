@@ -1,6 +1,8 @@
-# Getting Started with Create React App
+# Delivery Management System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a Delivery Management System built using [Create React App]. It streamlines parcel handling in an institutional setting, allowing students and staff to interact with parcel data and lodge complaints through an intuitive web interface.
+
+---
 
 ## Available Scripts
 
@@ -8,63 +10,59 @@ In the project directory, you can run:
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Runs the app in development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload when you make changes.\
-You may also see any lint errors in the console.
+You may also see lint errors in the console.
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Launches the test runner in interactive watch mode.\
+Not yet configured for this project.
 
 ### `npm run build`
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
+The build is minified and filenames include hashes.\
 Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
 ### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+**Note: This is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+This will copy all configuration files and dependencies so you can fully customize the project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Project Features
 
-## Learn More
+- 📦 Parcel management (add/view/update status)
+- 🧑‍🎓 Student login & dashboard
+- 🧑‍💼 Staff login & dashboard
+- 📝 Feedback and complaints system
+- 📱 Mobile-responsive UI with clear navigation
+- 🧩 CSS for styling
+- 🔐 Scalable and secure architecture
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## System Design
 
-### Code Splitting
+### User Experience & Navigation
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- Clean UI with clearly defined roles (Student & Staff)
+- Optimized forms for delivery entries and complaints
+- Intuitive navigation
 
-### Analyzing the Bundle Size
+## Hosting & Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+This app is deployed using **GitHub Pages**.
 
-### Making a Progressive Web App
+To deploy:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Add the following to `package.json`:
+   ```json
+   "homepage": "https://<your-username>.github.io/<repository-name>"
