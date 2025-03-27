@@ -17,7 +17,7 @@ const StudentComplaints = () => {
           <ul className="nav-links">
             <li><a href="/">HOME</a></li>
             <li><a className="pointer-hover" onClick={() => navigate("/addparcel")}>ADD PARCEL</a></li>
-            <li><a href="#">COMPLAINTS</a></li>
+            <li><a href="#"><u>COMPLAINTS</u></a></li>
           </ul>
         </nav>
       </header>

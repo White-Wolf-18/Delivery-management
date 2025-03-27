@@ -23,7 +23,7 @@ const StudentLandingPage = () => {
         </div>
         <nav className="nav-bar">
           <ul className="nav-links">
-            <li><a href="#">HOME</a></li>
+            <li><a href="#"><u>HOME</u></a></li>
             <li><a className="pointer-hover" onClick={() => navigate("/addparcel")}>ADD PARCEL</a></li>
             <li><a className="pointer-hover" onClick={() => navigate("/studentcomplaints")}>COMPLAINTS</a></li>
           </ul>
@@ -32,7 +32,7 @@ const StudentLandingPage = () => {
 
       {/* Main Content Section */}
       <main className="content">
-        <h2><u>WELCOME ALICE</u></h2>
+        <h2>WELCOME ALICE</h2>
         <h3>Your parcels</h3>
         <div className="parcel-section">
           <table>

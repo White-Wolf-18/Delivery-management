@@ -8,18 +8,19 @@ import LoginPage from "./Pages/LoginPage";
 import SignupPage from "./Pages/SignupPage";
 import StudentComplaints from "./Pages/StudentComplaints";
 import AddParcelPage from "./Pages/AddParcelPage";
-
+import StaffParcelStatus from "./Pages/StaffParcelStatus";
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<StudentLandingPage />} />
+        <Route path="/" element={<StaffLandingPage />} />
         <Route path="/studentprofile" element={<StudentProfile />} />
         <Route path="/staffprofile" element={<StaffProfile />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/studentcomplaints" element={<StudentComplaints />} />
         <Route path="/addparcel" element={<AddParcelPage />} />
+        <Route path="/staffparcelstatus" element={<StaffParcelStatus />} />
       </Routes>
     </Router>
   );

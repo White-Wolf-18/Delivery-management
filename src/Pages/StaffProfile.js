@@ -1,7 +1,9 @@
 import "../Styles/StaffProfile.css";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const StaffProfile = () => {
+  const navigate = useNavigate();
   return (
     <div className="container">
       {/* Header Section */}
@@ -14,7 +16,7 @@ const StaffProfile = () => {
         <nav className="nav-bar">
           <ul className="nav-links">
             <li><a href="/">HOME</a></li>
-            <li><a href="#">PARCEL STATUS</a></li>
+            <li><a className="cursor-hover" onClick={() => navigate("/staffparcelstatus")}>PARCEL STATUS</a></li>
             <li><a href="#">COMPLAINTS</a></li>
             <li><a href="#">FEEDBACK</a></li>
           </ul>

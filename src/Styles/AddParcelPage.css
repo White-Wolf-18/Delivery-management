@@ -24,6 +24,8 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    display: inline block;
+    margin-bottom: 20px;
     filter: brightness(0) saturate(100%) invert(28%) sepia(76%) saturate(2159%) hue-rotate(212deg) brightness(66%) contrast(95%);
   }
   /* Add Parcel Section */
@@ -36,7 +38,7 @@
     margin-bottom: 10px;
   }
   
-  .parcel-title {
+  .parcel-title2 {
     
     font-style: italic;
     color: lightblue;
@@ -44,7 +46,7 @@
     align-items: center;
     gap:8px;
   }
-  .parcel-title h2 {
+  .parcel-title2 h2 {
     margin: 0; /* Remove default margin */
     padding: 0;
     line-height: 1; /* Tighter vertical spacing */

@@ -16,7 +16,7 @@ const AddParcelPage = () => {
         <nav className="nav-bar">
           <ul className="nav-links">
             <li><a href="/">HOME</a></li>
-            <li><a href="#">ADD PARCEL</a></li>
+            <li><a href="#"><u>ADD PARCEL</u></a></li>
             <li><a className="point-hover" onClick={() => navigate("/studentcomplaints")}>COMPLAINTS</a></li>
           </ul>
         </nav>
@@ -24,7 +24,7 @@ const AddParcelPage = () => {
 
       {/* Add parcel Form */}
       <main className="content">
-        <div className="parcel-title">
+        <div className="parcel-title2">
            <h2><i>ADD PARCEL</i></h2>
            <div className="add-symbol"></div>
         </div>
