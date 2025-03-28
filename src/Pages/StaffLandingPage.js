@@ -57,7 +57,9 @@ const StaffLandingPage = () => {
             <tbody>
               {parcels.map((parcel, index) => (
                 <tr key={index}>
-                  <td>{parcel.number}</td>
+                  <td className="clickable-parcel"
+                  onClick={() => navigate("/staffparceldetails")}>
+                    {parcel.number}</td>
                   <td>{parcel.service}</td>
                   <td>{parcel.date}</td>
                   <td>{parcel.name}</td>

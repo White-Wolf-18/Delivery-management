@@ -55,7 +55,9 @@ const StaffParcelStatus = () => {
             <tbody>
               {parcels.map((parcel, index) => (
                 <tr key={index}>
-                  <td>{parcel.number}</td>
+                  <td className="clickable-parcel"
+                  onClick={() => navigate("/staffparceldetails")}>
+                    {parcel.number}</td>
                   <td>{parcel.name}</td>
                   <td>{parcel.rollno}</td>
                   <td className="text-center">

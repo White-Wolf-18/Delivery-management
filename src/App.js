@@ -9,6 +9,8 @@ import SignupPage from "./Pages/SignupPage";
 import StudentComplaints from "./Pages/StudentComplaints";
 import AddParcelPage from "./Pages/AddParcelPage";
 import StaffParcelStatus from "./Pages/StaffParcelStatus";
+import StudentParcelDetails from "./Pages/StudentParcelDetails";
+import StaffParcelDetails from "./Pages/StaffParcelDetails";
 function App() {
   return (
     <Router>
@@ -21,6 +23,8 @@ function App() {
         <Route path="/studentcomplaints" element={<StudentComplaints />} />
         <Route path="/addparcel" element={<AddParcelPage />} />
         <Route path="/staffparcelstatus" element={<StaffParcelStatus />} />
+        <Route path="/studentparceldetails" element={<StudentParcelDetails />} />
+        <Route path="/staffparceldetails" element={<StaffParcelDetails />} />
       </Routes>
     </Router>
   );

@@ -186,3 +186,8 @@ input[type="checkbox1"] {
 .cursor-hover{
     cursor: pointer;
 }
+.clickable-parcel {
+    color: blue;
+    cursor: pointer;
+    text-decoration: underline;
+  }

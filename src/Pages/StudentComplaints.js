@@ -3,6 +3,10 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 const StudentComplaints = () => {
+  const complaints = [
+    { number: "1231-1244-24134", comp: "Parcel to be delivered today not received yet", resolved: "Yes"},
+    { number: "4747-7874-6874", comp: "Status has not been updated correctly", resolved: "No"},
+  ];
     const navigate = useNavigate();
   return (
     <div className="container">
@@ -45,16 +49,15 @@ const StudentComplaints = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>3422-7565-3499</td>
-                <td><div className="complaint_info">Parcel to be delivered today not received yet</div></td>
-                <td>Yes</td>
-              </tr>
-              <tr>
-                <td>6783-0876-9116</td>
-                <td><div className="complaint_info">Status has not been updated correctly</div></td>
-                <td>No</td>
-              </tr>
+            {complaints.map((complaint, index) => (
+                <tr key={index}>
+                  <td className="clickable-parcel"
+                  onClick={() => navigate("/studentparceldetails")}>
+                  {complaint.number}</td>
+                  <td className="complaint_info">{complaint.comp}</td>
+                  <td>{complaint.resolved}</td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>

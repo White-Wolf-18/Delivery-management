@@ -48,7 +48,9 @@ const StudentLandingPage = () => {
             <tbody>
               {parcels.map((parcel, index) => (
                 <tr key={index}>
-                  <td>{parcel.number}</td>
+                  <td className="clickable-parcel"
+                  onClick={() => navigate("/studentparceldetails")}>
+                  {parcel.number}</td>
                   <td>{parcel.service}</td>
                   <td>{parcel.date}</td>
                   <td className={parcel.staffStatus === 'Received' ? 'received' : 'pending'}>
