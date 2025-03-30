@@ -56,7 +56,7 @@ const StudentLandingPage = () => {
                   <td className={parcel.staffStatus === 'Received' ? 'received' : 'pending'}>
                     {parcel.staffStatus}
                   </td>
-                  <td className="text-center">
+                  <td className="text-center" onClick={() => navigate("/feedbackform")}>
                     <input type="checkbox" />
                   </td>
                 </tr>

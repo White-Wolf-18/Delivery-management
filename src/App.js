@@ -10,6 +10,7 @@ import StudentComplaints from "./Pages/StudentComplaints";
 import AddParcelPage from "./Pages/AddParcelPage";
 import StaffParcelStatus from "./Pages/StaffParcelStatus";
 import StudentParcelDetails from "./Pages/StudentParcelDetails";
+import FeedbackForm from "./Pages/FeedbackForm";
 import StaffParcelDetails from "./Pages/StaffParcelDetails";
 import StaffFeedbackView from "./Pages/StaffFeedbackView";
 import StaffComplaintsPage from "./Pages/StaffComplaintsPage";
@@ -17,7 +18,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<StaffLandingPage />} />
+        <Route path="/" element={<StudentLandingPage />} />
         <Route path="/studentprofile" element={<StudentProfile />} />
         <Route path="/staffprofile" element={<StaffProfile />} />
         <Route path="/login" element={<LoginPage />} />
@@ -29,6 +30,7 @@ function App() {
         <Route path="/staffparceldetails" element={<StaffParcelDetails />} />
         <Route path="/staff-feedbackview" element={<StaffFeedbackView />} />
         <Route path="/staffcomplaints" element={<StaffComplaintsPage />} />
+        <Route path="/feedbackform" element={<FeedbackForm />} />
       </Routes>
     </Router>
   );
