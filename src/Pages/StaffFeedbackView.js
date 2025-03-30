@@ -1,18 +1,18 @@
 import { useNavigate } from "react-router-dom";
-import "../Styles/StaffParcelStatus.css";
+import "../Styles/StaffFeedbackView.css";
 import React from "react";
 const clearSearch = () => {
     document.getElementById("search-input").value = ""; // Clears the search input
   };  
-const StaffParcelStatus = () => {
+const StaffFeedbackView = () => {
   const parcels = [
-    { number: "1231-1244-24134", name: "Alice", rollno: "B220001CS" },
-    { number: "4747-7874-6874", name: "Jonas", rollno: "B210987EC" },
-    { number: "9093-1430-0439", name: "Edward", rollno: "B230056EE" },
-    { number: "1653-4637-9325", name: "Lucy", rollno: "M230067CS" },
-    { number: "1788-9037-6735", name: "Harry", rollno: "B241023ME" },
-    { number: "1788-9037-6735", name: "Janice", rollno: "B220267CS" },
-    { number: "1788-9037-6735", name: "Alex", rollno: "M240145EC" },
+    { number: "1231-1244-24134", student: "David", rollno: "B22XXXXCS", rating: "5", feedback: "Got the parcel on time" },
+    { number: "4747-7874-6874", student: "Mike", rollno: "B23XXXXME", rating: "4", feedback: "-" },
+    { number: "9093-1430-0439", student: "Emma", rollno: "B23XXXXPE", rating: "4.5", feedback: "-" },
+    { number: "1653-4637-9325", student: "Jacob", rollno: "M24XXXXCS", rating: "3", feedback: "Notification not sent on time" },
+    { number: "1788-9037-6735", student: "Helen", rollno: "B21XXXXEE", rating: "5", feedback: "-" },
+    { number: "1788-9037-6735", student: "Lucy", rollno: "B24XXXXEC", rating: "4.5", feedback: "-" },
+    { number: "1788-9037-6735", student: "Charles", rollno: "B23XXXXCS", rating: "3.5", feedback: "-" },
   ];
   const navigate = useNavigate();
   return (
@@ -27,29 +27,25 @@ const StaffParcelStatus = () => {
         <nav className="nav-bar">
           <ul className="nav-links">
             <li><a href="/">HOME</a></li>
-            <li><a href="#"><u>PARCEL STATUS</u></a></li>
+            <li><a className="cursor-hover" onClick={() => navigate("/staffparcelstatus")}>PARCEL STATUS</a></li>
             <li><a className="cursor-hover" onClick={() => navigate("/staffcomplaints")}>COMPLAINTS</a></li>
-            <li><a className="cursor-hover" onClick={() => navigate("/staff-feedbackview")}>FEEDBACK</a></li>
+            <li><a href="#"><u>FEEDBACK</u></a></li>
           </ul>
         </nav>
       </header>
 
       {/* Main Content Section */}
       <main className="content">
-      <h3><i>Received parcels</i></h3>
-      <div className="search-container">
-        <span className="search-icon">🔍</span>
-        <input type="text" id="search-input" className="search-input" placeholder="Search" />
-        <span className="clear-icon" onClick={clearSearch}>❌</span>
-      </div>
+      <h2><u><i>Student Feedbacks</i></u></h2>
         <div className="parcel-section">
           <table>
             <thead>
               <tr className="table-header">
-                <th>Parcel number</th>
+                <th>Parcel Order Number</th>
                 <th>Student Name</th>
                 <th>Roll Number</th>
-                <th>Received by Student</th>
+                <th>Rating (Out of 5)</th>
+                <th>Feedback</th>
               </tr>
             </thead>
             <tbody>
@@ -58,11 +54,10 @@ const StaffParcelStatus = () => {
                   <td className="clickable-parcel"
                   onClick={() => navigate("/staffparceldetails")}>
                     {parcel.number}</td>
-                  <td>{parcel.name}</td>
+                  <td>{parcel.student}</td>
                   <td>{parcel.rollno}</td>
-                  <td className="text-center">
-                    <input type="checkbox" />
-                  </td>
+                  <td>{parcel.rating}</td>
+                  <td className="feedback_info">{parcel.feedback}</td>
                 </tr>
               ))}
             </tbody>
@@ -73,4 +68,4 @@ const StaffParcelStatus = () => {
   );
 };
 
-export default StaffParcelStatus;
+export default StaffFeedbackView;

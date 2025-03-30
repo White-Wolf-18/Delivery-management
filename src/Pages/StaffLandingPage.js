@@ -27,9 +27,9 @@ const StaffLandingPage = () => {
         <nav className="nav-bar">
           <ul className="nav-links">
             <li><a href="#"><u>HOME</u></a></li>
-            <li><a className="cursor-hover"onClick={() => navigate("/staffparcelstatus")}>PARCEL STATUS</a></li>
-            <li><a href="#">COMPLAINTS</a></li>
-            <li><a href="#">FEEDBACK</a></li>
+            <li><a className="cursor-hover" onClick={() => navigate("/staffparcelstatus")}>PARCEL STATUS</a></li>
+            <li><a className="cursor-hover" onClick={() => navigate("/staffcomplaints")}>COMPLAINTS</a></li>
+            <li><a className="cursor-hover" onClick={() => navigate("/staff-feedbackview")}>FEEDBACK</a></li>
           </ul>
         </nav>
       </header>
@@ -65,7 +65,7 @@ const StaffLandingPage = () => {
                   <td>{parcel.name}</td>
                   <td>{parcel.contact}</td>
                   <td className="text-center">
-                    <input type="checkbox1" />
+                    <input type="checkbox" />
                   </td>
                 </tr>
               ))}

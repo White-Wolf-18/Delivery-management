@@ -11,6 +11,8 @@ import AddParcelPage from "./Pages/AddParcelPage";
 import StaffParcelStatus from "./Pages/StaffParcelStatus";
 import StudentParcelDetails from "./Pages/StudentParcelDetails";
 import StaffParcelDetails from "./Pages/StaffParcelDetails";
+import StaffFeedbackView from "./Pages/StaffFeedbackView";
+import StaffComplaintsPage from "./Pages/StaffComplaintsPage";
 function App() {
   return (
     <Router>
@@ -25,6 +27,8 @@ function App() {
         <Route path="/staffparcelstatus" element={<StaffParcelStatus />} />
         <Route path="/studentparceldetails" element={<StudentParcelDetails />} />
         <Route path="/staffparceldetails" element={<StaffParcelDetails />} />
+        <Route path="/staff-feedbackview" element={<StaffFeedbackView />} />
+        <Route path="/staffcomplaints" element={<StaffComplaintsPage />} />
       </Routes>
     </Router>
   );
