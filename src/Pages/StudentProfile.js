@@ -1,9 +1,21 @@
 import "../Styles/StudentProfile.css";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios"
 
 const StudentProfile = () => {
   const navigate = useNavigate();
+  const [data , setData] = useState([]);
+
+  useEffect(function(){
+    const dataFetch = async () => {
+      const userData = await axios.get("http://localhost:3001/student/");
+      setData(userData.data[0]);
+      console.log(userData.data)
+    }
+    dataFetch();
+  } , [])
+
   return (
     <div className="container">
       {/* Header Section */}
@@ -30,35 +42,35 @@ const StudentProfile = () => {
             <tbody>
               <tr>
                 <td><strong>Name</strong></td>
-                <td>Alice</td>
+                <td>{data.name}</td>
               </tr>
               <tr>
                 <td><strong>NITC Email Address</strong></td>
-                <td>alice_b22xxxxcs@nitc.ac.in</td>
+                <td>{data.email}</td>
               </tr>
               <tr>
                 <td><strong>Roll Number</strong></td>
-                <td>B22XXXXCS</td>
+                <td>{data.rollNumber}</td>
               </tr>
               <tr>
                 <td><strong>Course</strong></td>
-                <td>Bachelor of Technology</td>
+                <td>{data.course}</td>
               </tr>
               <tr>
                 <td><strong>Major</strong></td>
-                <td>Computer Science and Engineering</td>
+                <td>{data.major}</td>
               </tr>
               <tr>
                 <td><strong>Hostel</strong></td>
-                <td>MLH</td>
+                <td>{data.hostel}</td>
               </tr>
               <tr>
                 <td><strong>Gender</strong></td>
-                <td>Female</td>
+                <td>{data.gender}</td>
               </tr>
               <tr>
                 <td><strong>Mobile Number</strong></td>
-                <td>9876543210</td>
+                <td>{data.mobileNumber}</td>
               </tr>
             </tbody>
           </table>

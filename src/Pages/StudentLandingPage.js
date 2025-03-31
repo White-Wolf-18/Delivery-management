@@ -1,17 +1,29 @@
 import { useNavigate } from "react-router-dom";
 import "../Styles/StudentLandingPage.css";
-import React from "react";
+import axios from "axios"
+import React, { useEffect, useState } from "react";
 const StudentLandingPage = () => {
-  const parcels = [
-    { number: "1231-1244-24134", service: "Amazon", date: "14-02-2025", staffStatus: "Received" },
-    { number: "4747-7874-6874", service: "Flipkart", date: "17-02-2025", staffStatus: "Pending" },
-    { number: "9093-1430-0439", service: "Myntra", date: "19-02-2025", staffStatus: "Pending" },
-    { number: "1653-4637-9325", service: "Bluedart", date: "21-02-2025", staffStatus: "Pending" },
-    { number: "1788-9037-6735", service: "Amazon", date: "21-02-2025", staffStatus: "Pending" },
-    { number: "1788-9037-6735", service: "Amazon", date: "21-02-2025", staffStatus: "Pending" },
-    { number: "1788-9037-6735", service: "Amazon", date: "21-02-2025", staffStatus: "Pending" },
-  ];
+  // const parcels = [
+  //   { number: "1231-1244-24134", service: "Amazon", date: "14-02-2025", staffStatus: "Received" },
+  //   { number: "4747-7874-6874", service: "Flipkart", date: "17-02-2025", staffStatus: "Pending" },
+  //   { number: "9093-1430-0439", service: "Myntra", date: "19-02-2025", staffStatus: "Pending" },
+  //   { number: "1653-4637-9325", service: "Bluedart", date: "21-02-2025", staffStatus: "Pending" },
+  //   { number: "1788-9037-6735", service: "Amazon", date: "21-02-2025", staffStatus: "Pending" },
+  //   { number: "1788-9037-6735", service: "Amazon", date: "21-02-2025", staffStatus: "Pending" },
+  //   { number: "1788-9037-6735", service: "Amazon", date: "21-02-2025", staffStatus: "Pending" },
+  // ];
   const navigate = useNavigate();
+  const [parcels , setParcels] = useState([]);
+
+  useEffect(function(){
+    const tempData = async () => {
+      const parcelData = await axios.get("http://localhost:3001/parcel");
+      const hello = parcelData.data;
+      setParcels(hello);
+    }
+    tempData();
+  } , [])
+
   return (
     <div className="container">
       {/* Header Section */}
@@ -50,8 +62,8 @@ const StudentLandingPage = () => {
                 <tr key={index}>
                   <td className="clickable-parcel"
                   onClick={() => navigate("/studentparceldetails")}>
-                  {parcel.number}</td>
-                  <td>{parcel.service}</td>
+                  {parcel.parcelOrderNumber}</td>
+                  <td>{parcel.description}</td>
                   <td>{parcel.date}</td>
                   <td className={parcel.staffStatus === 'Received' ? 'received' : 'pending'}>
                     {parcel.staffStatus}
