@@ -1,5 +1,7 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
+import { useState, useEffect } from "react";
 import "../Styles/StaffComplaintsPage.css";
+import axios from "axios"
 import React from "react";  
 const StaffComplaintsPage = () => {
   const complaints = [
@@ -9,6 +11,16 @@ const StaffComplaintsPage = () => {
     { number: "1653-4637-9325", student: "Jacob", contact: "7847290556", complaint: "Notification not sent on time" },
   ];
   const navigate = useNavigate();
+  const [data , setData] = useState([]);
+
+  useEffect(() => {
+    const fun = async () => {
+      const temp = await axios.get(" http://localhost:3001/complaint");
+      setData(temp.data);
+    }
+    fun();
+  } , [])
+
   return (
     <div className="container">
       {/* Header Section */}
@@ -43,12 +55,12 @@ const StaffComplaintsPage = () => {
               </tr>
             </thead>
             <tbody>
-              {complaints.map((comp, index) => (
+              {data.map((comp, index) => (
                 <tr key={index}>
                   <td className="clickable-parcel"
                   onClick={() => navigate("/staffparceldetails")}>
-                    {comp.number}</td>
-                  <td>{comp.student}</td>
+                    {comp.parcelOrderNumber}</td>
+                  <td>{comp.description}</td>
                   <td>{comp.contact}</td>
                   <td className="complaint2_info">{comp.complaint}</td>
                   <td>

@@ -14,10 +14,10 @@ const StudentLandingPage = () => {
   // ];
   const navigate = useNavigate();
   const [parcels , setParcels] = useState([]);
-
+  const [num , setNum] = useState("");
   useEffect(function(){
     const tempData = async () => {
-      const parcelData = await axios.get("http://localhost:3001/parcel");
+      const parcelData = await axios.get("http://localhost:3001/parcel" , {withCredentials: true});
       const hello = parcelData.data;
       setParcels(hello);
     }
@@ -35,7 +35,7 @@ const StudentLandingPage = () => {
         </div>
         <nav className="nav-bar">
           <ul className="nav-links">
-            <li><a href="#"><u>HOME</u></a></li>
+            <li><a href="/home"><u>HOME</u></a></li>
             <li><a className="pointer-hover" onClick={() => navigate("/addparcel")}>ADD PARCEL</a></li>
             <li><a className="pointer-hover" onClick={() => navigate("/studentcomplaints")}>COMPLAINTS</a></li>
           </ul>
@@ -61,10 +61,12 @@ const StudentLandingPage = () => {
               {parcels.map((parcel, index) => (
                 <tr key={index}>
                   <td className="clickable-parcel"
-                  onClick={() => navigate("/studentparceldetails")}>
+                  onClick={() => {
+                    navigate("/studentparceldetails/" + parcel.parcelOrderNumber)
+                  }}>
                   {parcel.parcelOrderNumber}</td>
                   <td>{parcel.description}</td>
-                  <td>{parcel.date}</td>
+                  <td>{parcel.dateOfDeleivery}</td>
                   <td className={parcel.staffStatus === 'Received' ? 'received' : 'pending'}>
                     {parcel.staffStatus}
                   </td>
@@ -81,4 +83,5 @@ const StudentLandingPage = () => {
   );
 };
 
-export default StudentLandingPage;
+
+export default StudentLandingPage

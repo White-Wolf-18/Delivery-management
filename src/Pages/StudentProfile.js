@@ -8,12 +8,21 @@ const StudentProfile = () => {
   const [data , setData] = useState([]);
 
   useEffect(function(){
-    const dataFetch = async () => {
-      const userData = await axios.get("http://localhost:3001/student/");
-      setData(userData.data[0]);
-      console.log(userData.data)
+    try{
+      const dataFetch = async () => {
+        const userData = await axios.get("http://localhost:3001/student/", {
+          withCredentials: true 
+      });
+        console.log(userData)
+        setData(userData.data[0]);
+        console.log(userData.data)
+      }
+      dataFetch();
+    }catch(err){
+      console.log(err)
     }
-    dataFetch();
+
+    
   } , [])
 
   return (
@@ -27,7 +36,7 @@ const StudentProfile = () => {
         </div>
         <nav className="nav-bar">
           <ul className="nav-links">
-            <li><a href="/">HOME</a></li>
+            <li><a href="/home">HOME</a></li>
             <li><a className="pointer-hover"onClick={() => navigate("/addparcel")}>ADD PARCEL</a></li>
             <li><a className="pointer-hover"onClick={() => navigate("/studentcomplaints")}>COMPLAINTS</a></li>
           </ul>

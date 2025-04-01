@@ -18,19 +18,21 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<StudentLandingPage />} />
-        <Route path="/studentprofile" element={<StudentProfile />} />
+        <Route path="/" element={<LoginPage />} /> {/*Done*/}
+        <Route path="/home" element={<StudentLandingPage />} /> {/*Done*/}
+        <Route path="/studentprofile" element={<StudentProfile />} /> {/*Done*/}
         <Route path="/staffprofile" element={<StaffProfile />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignupPage />} />
-        <Route path="/studentcomplaints" element={<StudentComplaints />} />
-        <Route path="/addparcel" element={<AddParcelPage />} />
+        <Route path="/login" element={<LoginPage />} />  {/*Done*/}
+        <Route path="/signup" element={<SignupPage />} /> 
+        <Route path="/studentcomplaints" element={<StudentComplaints />} /> {/*Done*/}
+        <Route path="/addparcel" element={<AddParcelPage />} /> {/*Done*/}
         <Route path="/staffparcelstatus" element={<StaffParcelStatus />} />
-        <Route path="/studentparceldetails" element={<StudentParcelDetails />} />
+        <Route path="/studentparceldetails/:parcelOrderNumber" element={<StudentParcelDetails />} />
         <Route path="/staffparceldetails" element={<StaffParcelDetails />} />
         <Route path="/staff-feedbackview" element={<StaffFeedbackView />} />
-        <Route path="/staffcomplaints" element={<StaffComplaintsPage />} />
-        <Route path="/feedbackform" element={<FeedbackForm />} />
+        <Route path="/staffcomplaints" element={<StaffComplaintsPage />} /> {/*Done*/}
+        <Route path="/feedbackform" element={<FeedbackForm />} /> {/*Done*/}
+        <Route path="/staff" element={<StaffLandingPage />} /> {/*Done*/}
       </Routes>
     </Router>
   );

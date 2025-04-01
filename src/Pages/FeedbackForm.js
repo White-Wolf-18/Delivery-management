@@ -1,9 +1,18 @@
 import "../Styles/FeedbackForm.css";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import axios from "axios"
 const FeedbackForm = () => {
     const navigate = useNavigate();
+    const [form , setForm] = useState({
+      description: ""
+    });
+
+    async function handleForm(){
+      const response = await axios.post("http://localhost:3001/feedback/createFeedback" , form);
+      navigate("/");
+    }
+
     return (
         <div className="container">
       {/* Header Section */}
@@ -28,8 +37,12 @@ const FeedbackForm = () => {
 </div>
         <br/>
           <h4>Enter your feedback if any</h4>
-          <textarea className="complaint-description" placeholder="Give your feedback"></textarea><br></br>
-          <button className="place-complaint-button" onClick={() => navigate(-1)}>Submit feedback</button>
+          <input onChange={(e) => {
+            setForm(prev => (
+              {...prev , description: e.target.value}
+            ))
+          }} className="complaint-description" placeholder="Give your feedback"></input><br></br>
+          <button className="place-complaint-button" onClick={handleForm}>Submit feedback</button>
         </div>
         </main>
         </div>

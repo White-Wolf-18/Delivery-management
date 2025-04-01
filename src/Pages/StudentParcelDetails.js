@@ -1,9 +1,23 @@
 import "../Styles/StudentParcelDetails.css";
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import axios from "axios"
 
 const StudentParcelDetails = () => {
     const navigate = useNavigate();
+    const [data , setData] = useState("");
+    const {parcelOrderNumber} = useParams();
+
+    useEffect(() => {
+      const dataFetch = async () => {
+          // console.log(parcelOrderNumber)
+          const res = await axios.post(`http://localhost:3001/parcel/getById` , {parcelOrderNumber}, {withCredentials: true}); 
+          console.log(res.data[0])
+          setData(res.data[0])
+      }
+      dataFetch();
+    } , [parcelOrderNumber])
+
     return (
         <div className="container">
       {/* Header Section */}
@@ -29,23 +43,23 @@ const StudentParcelDetails = () => {
             <tbody>
               <tr>
                 <td><strong>Delivery Service Name</strong></td>
-                <td>Amazon</td>
+                <td>{parcelOrderNumber}</td>
               </tr>
               <tr>
                 <td><strong>Parcel order Number</strong></td>
-                <td>1231-1244-24134</td>
+                <td>{data.parcelOrderNumber}</td>
               </tr>
               <tr>
                 <td><strong>Date of delivery</strong></td>
-                <td>14-02-2025</td>
+                <td>{data.dateOfDeleivery}</td>
               </tr>
               <tr>
                 <td><strong>Description of parcel</strong></td>
-                <td className="parcel_info">Nike shoes blue and white</td>
+                <td className="parcel_info">{data.description}</td>
               </tr>
               <tr>
                 <td><strong>OTP</strong></td>
-                <td>-</td>
+                <td>{data.otp}</td>
               </tr>
             </tbody>
           </table>

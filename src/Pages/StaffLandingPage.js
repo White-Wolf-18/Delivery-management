@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import "../Styles/StaffLandingPage.css";
-import React from "react";
+import React, { useEffect  , useState} from "react";
+import axios from "axios"
+
 const clearSearch = () => {
     document.getElementById("search-input").value = ""; // Clears the search input
   };  
@@ -15,6 +17,16 @@ const StaffLandingPage = () => {
     { number: "1788-9037-6735", service: "Amazon", date: "21-02-2025", name: "Alex", contact: "123456789" },
   ];
   const navigate = useNavigate();
+  const [tempData , setTempData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const allParcels = await axios.get("http://localhost:3001/parcel");
+      setTempData(allParcels.data);
+    }
+    fetchData();
+  } , [])
+
   return (
     <div className="container">
       {/* Header Section */}
@@ -55,11 +67,11 @@ const StaffLandingPage = () => {
               </tr>
             </thead>
             <tbody>
-              {parcels.map((parcel, index) => (
+              {tempData.map((parcel, index) => (
                 <tr key={index}>
                   <td className="clickable-parcel"
                   onClick={() => navigate("/staffparceldetails")}>
-                    {parcel.number}</td>
+                    {parcel.parcelOrderNumber}</td>
                   <td>{parcel.service}</td>
                   <td>{parcel.date}</td>
                   <td>{parcel.name}</td>

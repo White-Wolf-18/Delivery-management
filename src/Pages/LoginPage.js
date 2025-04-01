@@ -1,11 +1,29 @@
 import "../Styles/LoginPage.css";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios"
+
 
 const LoginPage = () => {
     const [userType, setUserType] = useState("Student");
     const navigate = useNavigate();
+    const [form , setForm] = useState({
+        email: "",
+        password: ""
+    });
 
+    async function handleForm(){
+        const res = await axios.post("http://localhost:3001/student/login" , form , {withCredentials: true});
+        console.log(res)
+        if(res.data === "User is not registered. Please register yourself"){
+            alert("Register Yourself first");
+            navigate("/signup")
+        }
+        if(res.data === "Logged in"){
+            navigate("/home")
+        }
+    }
+    
     return (
         <div className="container">
             {/* Header Section */}
@@ -46,10 +64,18 @@ const LoginPage = () => {
                     </div>
 
                     {/* Login Form */}
-                    <input type="email" placeholder="Enter your email" className="input-box" />
-                    <input type="password" placeholder="Enter your password" className="input-box" />
+                    <input onChange={(e) => {
+                        setForm(prev => (
+                            {...prev , email: e.target.value}
+                        ))
+                    }} type="email" placeholder="Enter your email" className="input-box" />
+                    <input onChange={(e) => {
+                        setForm(prev => (
+                            {...prev , password: e.target.value}
+                        ))
+                    }} type="password" placeholder="Enter your password" className="input-box" />
 
-                    <button className="login-button">Login</button>
+                    <button onClick={handleForm} className="login-button">Login</button>
 
                     <p className="signup-text">
                         Don't have an account? <a className="signup-link" onClick={() => navigate("/signup")}>Signup</a>

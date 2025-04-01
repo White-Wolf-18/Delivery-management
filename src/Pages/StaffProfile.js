@@ -15,7 +15,7 @@ const StaffProfile = () => {
         </div>
         <nav className="nav-bar">
           <ul className="nav-links">
-            <li><a href="/">HOME</a></li>
+            <li><a href="/home">HOME</a></li>
             <li><a className="cursor-hover" onClick={() => navigate("/staffparcelstatus")}>PARCEL STATUS</a></li>
             <li><a className="cursor-hover" onClick={() => navigate("/staffcomplaints")}>COMPLAINTS</a></li>
             <li><a className="cursor-hover" onClick={() => navigate("/staff-feedbackview")}>FEEDBACK</a></li>
