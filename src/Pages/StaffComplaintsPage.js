@@ -4,14 +4,10 @@ import "../Styles/StaffComplaintsPage.css";
 import axios from "axios"
 import React from "react";  
 const StaffComplaintsPage = () => {
-  const complaints = [
-    { number: "1231-1244-24134", student: "David", contact: "7317499300", complaint: "Parcel to be delivered today not received yet" },
-    { number: "4747-7874-6874", student: "Mike", contact: "9876543210", complaint: "Status has not been updated correctly" },
-    { number: "9093-1430-0439", student: "Emma", contact: "9898989898", complaint: "Late delivery of the parcel" },
-    { number: "1653-4637-9325", student: "Jacob", contact: "7847290556", complaint: "Notification not sent on time" },
-  ];
+ 
   const navigate = useNavigate();
   const [data , setData] = useState([]);
+  const [text , setText] = useState(false);
 
   useEffect(() => {
     const fun = async () => {
@@ -20,14 +16,6 @@ const StaffComplaintsPage = () => {
     }
     fun();
   } , [])
-
-  const [num , setNum] = useState(0);
-  
-  
-
-  function handleClick(){
-    
-  }
 
   return (
     <div className="container">
@@ -70,12 +58,14 @@ const StaffComplaintsPage = () => {
                   <td>{comp.email}</td>
                   <td className="">{comp.description}</td>
                   <td>
-                    <button id="complaint-btn" onClick={
+                    {!comp.resolved ? <button id="complaint-btn" onClick={
                       async () => {
-                        setNum(comp.parcelOrderNumber);
-                        await axios.post("http://localhost:3001/complaint/update" , {num} , {withCredentials: true})
+                        
+                        const parcelOrderNumber = comp.parcelOrderNumber;
+                        await axios.post("http://localhost:3001/complaint/update" , {parcelOrderNumber} , {withCredentials: true})
+                        
                       }
-                    }>Resolved</button>
+                    }>Resolved</button> : "Resolved" }
                   </td>
                 </tr>
               ))}

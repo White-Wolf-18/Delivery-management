@@ -17,6 +17,9 @@ const StudentLandingPage = () => {
     const tempData = async () => {
       const parcelData = await axios.get("http://localhost:3001/parcel" , {withCredentials: true});
       const hello = parcelData.data;
+      hello.sort((a, b) => {
+        return a.serviceName.localeCompare(b.serviceName);
+      });
       setParcels(hello);
     }
     tempData();

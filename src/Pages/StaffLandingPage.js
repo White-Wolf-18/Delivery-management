@@ -13,6 +13,7 @@ const StaffLandingPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       const allParcels = await axios.get("http://localhost:3001/parcel/getAll" , {withCredentials: true});
+      allParcels.data.sort((a, b) => a.serviceName.localeCompare(b.serviceName));
       setTempData(allParcels.data);
     }
     fetchData();
