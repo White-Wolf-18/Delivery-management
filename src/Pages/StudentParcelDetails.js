@@ -69,7 +69,7 @@ const StudentParcelDetails = () => {
         <div className="button-section">
         <button className="button back-btn" onClick={() => navigate(-1)}><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAABCElEQVR4nO2WvYrCQBRGY+1PIRi02M5iS+3tfCiL1ecQxRfY3cbKchcVEcVtFExr5w9speXCkWGvEEVMouYKktOEKeY7c+/MJLGsiEcC2MAP0NWWzvhnpCXNAFOROkD2OaUGYMLt7GTRTaBsKYpP+QbyXmL3oTJP29eKjzPiQAF4A1aS9QuUQpe7spLAu0ueDyIfXyuWrBjwIVlffibYsufDW8Suytci93fg7gVQFXFDW1wQsaMtToh4qy1OHS72o1rd1hbXRFzRbvMG+ANetKTmBfIp1bY0Kz1IF0A67GtTlD017TUsgddLkwZAP8C4jzcdIOe1WhPUCzg+9yMwB+qen8KICCsk9pWmbwXtUJ6RAAAAAElFTkSuQmCC"
                             alt="back-logo" className="back-img" /><span className="back">Back</span></button>
-        <button className="button edit-btn">Edit details</button>
+     
         </div>
       </main>
         </div>

@@ -10,7 +10,10 @@ const AddParcelPage = () => {
       orderNumber: "",
       date: "",
       description: "",
-      otp: ""
+      otp: "",
+      receptionUser: false,
+      receptionStaff: false,
+      receptionUserByStaff: false 
     });
 
     async function handleForm(e){

@@ -13,6 +13,14 @@
     min-height: 100vh;
 }
 
+#text-btn{
+    color: black;
+    padding-top: 16px;
+    padding-bottom: 8px;
+    font-size: 16px;
+    margin-left: 5px;
+}
+
 /* Header Styling */
 .header {
     display: flex;
@@ -157,14 +165,15 @@
   }
   
   /* Signup Link */
-  .signup-text {
-    font-size: 14px;
+  .signup-text1 {
+    font-size: 16px;
     margin-top: 10px;
   }
   
-  .signup-text a {
+  .signup-text1 a {
     color: blue;
     text-decoration: none;
+    font-size: 16px;
   }
   
   /* Google Login Button */

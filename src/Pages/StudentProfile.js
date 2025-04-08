@@ -6,6 +6,7 @@ import axios from "axios"
 const StudentProfile = () => {
   const navigate = useNavigate();
   const [data , setData] = useState([]);
+  const [character , setCharacter] = useState("A");
 
   useEffect(function(){
     try{
@@ -15,6 +16,7 @@ const StudentProfile = () => {
       });
         console.log(userData)
         setData(userData.data[0]);
+        setCharacter(userData.data[0].name.charAt(0))
         console.log(userData.data)
       }
       dataFetch();
@@ -39,7 +41,7 @@ const StudentProfile = () => {
       {/* Header Section */}
       <header className="header">
         <div className="top-section">
-          <div className="profile-circle">A</div>
+          <div className="profile-circle">{character}</div>
           <h1 className="title">DELIVERY MANAGEMENT</h1>
           <div className="Logout-symbol"></div>
         </div>

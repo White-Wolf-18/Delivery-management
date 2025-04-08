@@ -2,10 +2,16 @@ import { useNavigate } from "react-router-dom";
 import "../Styles/StudentLandingPage.css";
 import axios from "axios"
 import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+
 const StudentLandingPage = () => {
 
   const navigate = useNavigate();
+  const location = useLocation();
   const [parcels , setParcels] = useState([]);
+
+   const [data , setData] = useState([]);
+    const [character , setCharacter] = useState("A");
 
   useEffect(function(){
     const tempData = async () => {
@@ -14,7 +20,23 @@ const StudentLandingPage = () => {
       setParcels(hello);
     }
     tempData();
+
+
+
+    const dataFetch = async () => {
+      const userData = await axios.get("http://localhost:3001/student/", {
+        withCredentials: true 
+    });
+      console.log(userData)
+      setData(userData.data[0]);
+      setCharacter(userData.data[0].name.charAt(0))
+      console.log(userData.data)
+    }
+    dataFetch();
+
+
   } , [])
+
 
   async function logOut(){
     await axios.get("http://localhost:3001/student/logout" , {withCredentials: true});
@@ -26,9 +48,9 @@ const StudentLandingPage = () => {
       {/* Header Section */}
       <header className="header">
         <div className="top-section">
-          <div className="profile-circle" onClick={() => navigate("/studentprofile")}>A</div>
+          <div className="profile-circle" onClick={() => navigate("/studentprofile")}>{character}</div>
           <h1 className="title">DELIVERY MANAGEMENT</h1>
-          <button onClick={logOut}>Logout</button>
+          <button id="logOut-btn" onClick={logOut}>Logout</button>
         </div>
         <nav className="nav-bar">
           <ul className="nav-links">
@@ -41,7 +63,7 @@ const StudentLandingPage = () => {
 
       {/* Main Content Section */}
       <main className="content">
-        <h2>WELCOME ALICE</h2>
+        <h2>Welcome {data.name}</h2>
         <h3>Your parcels</h3>
         <div className="parcel-section">
           <table>
@@ -64,9 +86,9 @@ const StudentLandingPage = () => {
                   {parcel.parcelOrderNumber}</td>
                   <td>{parcel.serviceName}</td>
                   <td>{parcel.dateOfDeleivery}</td>
-                  <td>{parcel.receptionStatus ? "Received" : "Pending"}</td>
+                  <td>{parcel.receptionStaff ? "Received" : "Pending"}</td>
                   <td className="text-center" onClick={() => navigate("/feedbackform")}>
-                    <input type="checkbox" />
+                   {!parcel.receptionUser ? <button id="parcel-btn">Received</button> : "Received"}
                   </td>
                 </tr>
               ))}

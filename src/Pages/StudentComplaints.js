@@ -9,9 +9,11 @@ const StudentComplaints = () => {
     { number: "4747-7874-6874", comp: "Status has not been updated correctly", resolved: "No"},
   ];
     const navigate = useNavigate();
+    
     const [form , setForm] = useState({
       orderNumber: "",
-      description: ""
+      description: "",
+      resolved: false
     });
 
     const [data , setData] = useState([]);

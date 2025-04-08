@@ -21,6 +21,14 @@ const StaffComplaintsPage = () => {
     fun();
   } , [])
 
+  const [num , setNum] = useState(0);
+  
+  
+
+  function handleClick(){
+    
+  }
+
   return (
     <div className="container">
       {/* Header Section */}
@@ -57,13 +65,17 @@ const StaffComplaintsPage = () => {
             <tbody>
               {data.map((comp, index) => (
                 <tr key={index}>
-                  <td className="clickable-parcel"
-                  onClick={() => navigate("/staffparceldetails")}>
+                  <td className="">
                     {comp.parcelOrderNumber}</td>
                   <td>{comp.email}</td>
                   <td className="">{comp.description}</td>
                   <td>
-                    <input type="checkbox" />
+                    <button id="complaint-btn" onClick={
+                      async () => {
+                        setNum(comp.parcelOrderNumber);
+                        await axios.post("http://localhost:3001/complaint/update" , {num} , {withCredentials: true})
+                      }
+                    }>Resolved</button>
                   </td>
                 </tr>
               ))}

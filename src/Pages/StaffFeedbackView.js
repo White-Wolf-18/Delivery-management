@@ -68,8 +68,7 @@ const StaffFeedbackView = () => {
             <tbody>
               {data.map((parcel, index) => (
                 <tr key={index}>
-                  <td className="clickable-parcel"
-                  onClick={() => navigate("/staffparceldetails")}>
+                  <td>
                     {parcel.parcelOrderNumber}</td>
                   <td>{parcel.description}</td>
                 </tr>

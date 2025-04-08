@@ -18,6 +18,14 @@ const StaffLandingPage = () => {
     fetchData();
   } , [])
 
+
+  async function logOut(){
+    await axios.get("http://localhost:3001/student/logout" , {withCredentials: true});
+    navigate("/")
+  }
+  
+
+
   return (
     <div className="container">
       {/* Header Section */}
@@ -25,7 +33,7 @@ const StaffLandingPage = () => {
         <div className="top-section">
           <div className="profile-circle" onClick={() => navigate("/staffprofile")}>A</div>
           <h1 className="title">DELIVERY MANAGEMENT</h1>
-          <div className="Logout-symbol"></div>
+          <button id="logOut-btn" onClick={logOut}>Logout</button>
         </div>
         <nav className="nav-bar">
           <ul className="nav-links">
@@ -49,7 +57,7 @@ const StaffLandingPage = () => {
                 <th>Delivery service</th>
                 <th>Parcel date</th>
                 <th>Student Name</th>
-                <th>Contact</th>
+                <th>Email</th>
                 
               </tr>
             </thead>

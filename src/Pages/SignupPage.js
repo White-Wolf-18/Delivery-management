@@ -57,17 +57,6 @@ const SignupPage = () => {
                             />
                             Student             
                         </label>
-
-                        <label className={userType === "Staff" ? "active" : ""}>
-                            <input
-                                type="radio"
-                                name="userType"
-                                value="Staff"
-                                checked={userType === "Staff"}
-                                onChange={() => setUserType("Staff")}
-                            />
-                            Staff
-                        </label>
           </div>
 
         {/* Login Form */}

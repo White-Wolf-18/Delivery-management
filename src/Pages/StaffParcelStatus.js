@@ -18,6 +18,7 @@ const StaffParcelStatus = () => {
     func();
   } , []);
 
+ 
 
   return (
     <div className="container">
@@ -56,15 +57,25 @@ const StaffParcelStatus = () => {
               {data.map((parcel, index) => (
                 <tr key={index}>
                   <td className="clickable-parcel"
-                  onClick={() => navigate("/staffparceldetails")}>
+                  onClick={() => navigate("/staffparceldetails/" + parcel.parcelOrderNumber)}>
                     {parcel.parcelOrderNumber}</td>
                   <td>{parcel.email}</td>
                  
                   <td className="text-center">
-                    <input type="checkbox" />
+                    {!parcel.receptionStaff ? <button id="staff-btn" onClick={
+                      async() => {
+                        const parcelOrderNumber = parcel.parcelOrderNumber;
+                        const update = await axios.post("http://localhost:3001/parcel/updateStatusStaff", {parcelOrderNumber} , {withCredentials: true})
+                      }
+                    }>Received</button> : "Received"}
                   </td>
                   <td className="text-center">
-                    <input type="checkbox" />
+                  {!parcel.receptionUserByStaff ? <button id="std-btn" onClick={
+                      async() => {
+                        const parcelOrderNumber = parcel.parcelOrderNumber;
+                        const update = await axios.post("http://localhost:3001/parcel/updateStatusStaffUser", {parcelOrderNumber} , {withCredentials: true})
+                      }
+                    }>Received</button> : "Received"}
                   </td>
                   
                 </tr>
