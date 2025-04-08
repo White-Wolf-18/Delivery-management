@@ -10,14 +10,14 @@ const StudentParcelDetails = () => {
 
     useEffect(() => {
       console.log(parcelOrderNumber)
-    //   const dataFetch = async () => {
-    //     const res = await axios.get(`http://localhost:3001/parcel/getById/${parcelOrderNumber}`, {
-    //         withCredentials: true
-    //     });
-    //     console.log(res.data);
-    //     setData(res.data[0]); // Extract the first (and only) object
-    // }    
-    //   dataFetch();
+      const dataFetch = async () => {
+        const res = await axios.get(`http://localhost:3001/parcel/getById/${parcelOrderNumber}`, {
+            withCredentials: true
+        });
+        console.log(res.data);
+        setData(res.data[0]); // Extract the first (and only) object
+    }    
+      dataFetch();
     } , [])
 
     return (
@@ -45,11 +45,11 @@ const StudentParcelDetails = () => {
             <tbody>
               <tr>
                 <td><strong>Delivery Service Name</strong></td>
-                <td>{parcelOrderNumber}</td>
+                <td>{data.serviceName}</td>
               </tr>
               <tr>
                 <td><strong>Parcel order Number</strong></td>
-                <td>{data.description}</td>
+                <td>{parcelOrderNumber}</td>
               </tr>
               <tr>
                 <td><strong>Date of delivery</strong></td>

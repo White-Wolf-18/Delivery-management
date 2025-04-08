@@ -18,8 +18,6 @@ import LoginPageStaff from "./Pages/LoginPageStaff";
 import SignupPageStaff from "./Pages/SignupPageStaff";
 
 
-
-
 function App() {
   return (
     <Router>

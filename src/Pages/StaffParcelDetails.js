@@ -1,10 +1,26 @@
+import axios from "axios";
 import "../Styles/StaffParcelDetails.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 const StaffParcelDetails = () => {
-    const navigate = useNavigate();
-    const {parcelOrderNumber} = useParams();
+
+  const navigate = useNavigate(); 
+
+  const [data , setData] = useState("");
+  const {parcelOrderNumber} = useParams();
+
+  useEffect(() => {
+    console.log(parcelOrderNumber)
+    const dataFetch = async () => {
+      const res = await axios.get(`http://localhost:3001/parcel/getById/${parcelOrderNumber}`, {
+          withCredentials: true
+      });
+      console.log(res.data);
+      setData(res.data[0]); // Extract the first (and only) object
+  }    
+    dataFetch();
+  } , [])
     
     return (
         <div className="container">
@@ -32,42 +48,34 @@ const StaffParcelDetails = () => {
             <tbody>
               <tr>
                 <td><strong>Delivery Service Name</strong></td>
-                <td>Amazon</td>
+                <td>{data.serviceName}</td>
               </tr>
               <tr>
                 <td><strong>Parcel order Number</strong></td>
-                <td>1231-1244-24134</td>
+                <td>{data.parcelOrderNumber}</td>
               </tr>
               <tr>
                 <td><strong>Date of delivery</strong></td>
-                <td>14-02-2025</td>
+                <td>{data.dateOfDeleivery}</td>
               </tr>
               <tr>
                 <td><strong>Student Name</strong></td>
-                <td>Alice</td>
-              </tr>
-              <tr>
-                <td><strong>Student Roll Number</strong></td>
-                <td>B22XXXXCS</td>
-              </tr>
-              <tr>
-                <td><strong>Student Mobile Number</strong></td>
-                <td>9876543210</td>
+                <td>{data.email}</td>
               </tr>
               <tr>
                 <td><strong>Description of parcel</strong></td>
-                <td className="parcel_info">Nike shoes blue and white</td>
+                <td className="parcel_info">{data.description}</td>
               </tr>
               <tr>
                 <td><strong>OTP</strong></td>
-                <td>-</td>
+                <td>{data.otp}</td>
               </tr>
               
             </tbody>
           </table>
         </div>
         <button className="button back-btn" onClick={() => navigate(-1)}><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAABCElEQVR4nO2WvYrCQBRGY+1PIRi02M5iS+3tfCiL1ecQxRfY3cbKchcVEcVtFExr5w9speXCkWGvEEVMouYKktOEKeY7c+/MJLGsiEcC2MAP0NWWzvhnpCXNAFOROkD2OaUGYMLt7GTRTaBsKYpP+QbyXmL3oTJP29eKjzPiQAF4A1aS9QuUQpe7spLAu0ueDyIfXyuWrBjwIVlffibYsufDW8Suytci93fg7gVQFXFDW1wQsaMtToh4qy1OHS72o1rd1hbXRFzRbvMG+ANetKTmBfIp1bY0Kz1IF0A67GtTlD017TUsgddLkwZAP8C4jzcdIOe1WhPUCzg+9yMwB+qen8KICCsk9pWmbwXtUJ6RAAAAAElFTkSuQmCC"
-                            alt="back-logo" className="back-img" /><span className="back">Back</span></button>
+        alt="back-logo" className="back-img" /><span className="back">Back</span></button>
       </main>
         </div>
     );

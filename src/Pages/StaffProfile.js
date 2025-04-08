@@ -6,15 +6,15 @@ const StaffProfile = () => {
   const navigate = useNavigate();
   const [data , setData] = useState([]);
 
-
   useEffect(function(){
     try{
       const dataFetch = async () => {
-        const userData = await axios.get("http://localhost:3001/student/", {
+        
+        const userData = await axios.get("http://localhost:3001/owner/", {
           withCredentials: true 
       });
         console.log(userData)
-        setData(userData.data[0]);
+        setData(userData.data);
         console.log(userData.data)
       }
       dataFetch();
@@ -24,7 +24,6 @@ const StaffProfile = () => {
   } , [])
 
 
-
   return (
     <div className="container">
       {/* Header Section */}
@@ -32,7 +31,7 @@ const StaffProfile = () => {
         <div className="top-section">
           <div className="profile-circle">A</div>
           <h1 className="title">DELIVERY MANAGEMENT</h1>
-          <div className="Logout-symbol"></div>
+          <button>Logout</button>
         </div>
         <nav className="nav-bar">
           <ul className="nav-links">
@@ -52,23 +51,19 @@ const StaffProfile = () => {
             <tbody>
               <tr>
                 <td><strong>Name</strong></td>
-                <td>Alice</td>
+                <td>{data.name}</td>
               </tr>
               <tr>
                 <td><strong>NITC Email Address</strong></td>
-                <td>alice@nitc.ac.in</td>
+                <td>{data.email}</td>
               </tr>
               <tr>
                 <td><strong>Staff ID</strong></td>
-                <td>XXXXXXXX</td>
-              </tr>
-              <tr>
-                <td><strong>Gender</strong></td>
-                <td>Female</td>
+                <td>{data.id}</td>
               </tr>
               <tr>
                 <td><strong>Mobile Number</strong></td>
-                <td>9876543210</td>
+                <td>{data.mobileNumber}</td>
               </tr>
             </tbody>
           </table>

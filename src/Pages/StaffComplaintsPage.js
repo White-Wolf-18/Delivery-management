@@ -61,7 +61,7 @@ const StaffComplaintsPage = () => {
                   onClick={() => navigate("/staffparceldetails")}>
                     {comp.parcelOrderNumber}</td>
                   <td>{comp.email}</td>
-                  <td className="complaint2_info">{comp.description}</td>
+                  <td className="">{comp.description}</td>
                   <td>
                     <input type="checkbox" />
                   </td>
@@ -70,7 +70,7 @@ const StaffComplaintsPage = () => {
             </tbody>
           </table>
         </div>
-        <button className="delete-complaint-button">Delete Complaint</button>
+
       </main>
     </div>
   );
