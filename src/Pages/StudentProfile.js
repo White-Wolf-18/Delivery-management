@@ -21,9 +21,18 @@ const StudentProfile = () => {
     }catch(err){
       console.log(err)
     }
-
-    
   } , [])
+
+  function logOut() {
+    const func = async () => {
+      await axios.get("http://localhost:3001/student/logout",{
+        withCredentials: true,
+      });
+      navigate("/");
+    };
+    func();
+  }
+  
 
   return (
     <div className="container">
@@ -66,16 +75,8 @@ const StudentProfile = () => {
                 <td>{data.course}</td>
               </tr>
               <tr>
-                <td><strong>Major</strong></td>
-                <td>{data.major}</td>
-              </tr>
-              <tr>
                 <td><strong>Hostel</strong></td>
                 <td>{data.hostel}</td>
-              </tr>
-              <tr>
-                <td><strong>Gender</strong></td>
-                <td>{data.gender}</td>
               </tr>
               <tr>
                 <td><strong>Mobile Number</strong></td>
@@ -84,7 +85,6 @@ const StudentProfile = () => {
             </tbody>
           </table>
         </div>
-        <button className="edit-button">Edit details</button>
       </main>
     </div>
   );

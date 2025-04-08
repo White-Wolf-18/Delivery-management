@@ -15,7 +15,7 @@ const StaffComplaintsPage = () => {
 
   useEffect(() => {
     const fun = async () => {
-      const temp = await axios.get(" http://localhost:3001/complaint");
+      const temp = await axios.get(" http://localhost:3001/complaint/getAll");
       setData(temp.data);
     }
     fun();
@@ -32,7 +32,7 @@ const StaffComplaintsPage = () => {
         </div>
         <nav className="nav-bar">
           <ul className="nav-links">
-            <li><a href="/">HOME</a></li>
+            <li><a href="/staff">HOME</a></li>
             <li><a className="cursor-hover"onClick={() => navigate("/staffparcelstatus")}>PARCEL STATUS</a></li>
             <li><a href="#"><u>COMPLAINTS</u></a></li>
             <li><a className="cursor-hover"onClick={() => navigate("/staff-feedbackview")}>FEEDBACK</a></li>
@@ -49,7 +49,7 @@ const StaffComplaintsPage = () => {
               <tr className="table-header">
                 <th>Parcel Order Number</th>
                 <th>Student Name</th>
-                <th>Contact</th>
+          
                 <th>Complaint</th>
                 <th>Issue Status</th>
               </tr>
@@ -60,9 +60,8 @@ const StaffComplaintsPage = () => {
                   <td className="clickable-parcel"
                   onClick={() => navigate("/staffparceldetails")}>
                     {comp.parcelOrderNumber}</td>
-                  <td>{comp.description}</td>
-                  <td>{comp.contact}</td>
-                  <td className="complaint2_info">{comp.complaint}</td>
+                  <td>{comp.email}</td>
+                  <td className="complaint2_info">{comp.description}</td>
                   <td>
                     <input type="checkbox" />
                   </td>

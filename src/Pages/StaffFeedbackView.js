@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import "../Styles/StaffFeedbackView.css";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 const clearSearch = () => {
     document.getElementById("search-input").value = ""; // Clears the search input
   };  
@@ -14,6 +15,25 @@ const StaffFeedbackView = () => {
     { number: "1788-9037-6735", student: "Lucy", rollno: "B24XXXXEC", rating: "4.5", feedback: "-" },
     { number: "1788-9037-6735", student: "Charles", rollno: "B23XXXXCS", rating: "3.5", feedback: "-" },
   ];
+
+  const [data , setData] = useState([]);
+
+  useEffect(() => {
+    try{
+      const dataFetch = async () => {
+        const userData = await axios.get("http://localhost:3001/feedback/", {
+          withCredentials: true 
+      });
+        console.log(userData)
+        setData(userData.data);
+        console.log(userData.data)
+      }
+      dataFetch();
+    }catch(err){
+      console.log(err)
+    }
+  } , [])
+
   const navigate = useNavigate();
   return (
     <div className="container">
@@ -26,7 +46,7 @@ const StaffFeedbackView = () => {
         </div>
         <nav className="nav-bar">
           <ul className="nav-links">
-            <li><a href="/">HOME</a></li>
+            <li><a href="/staff">HOME</a></li>
             <li><a className="cursor-hover" onClick={() => navigate("/staffparcelstatus")}>PARCEL STATUS</a></li>
             <li><a className="cursor-hover" onClick={() => navigate("/staffcomplaints")}>COMPLAINTS</a></li>
             <li><a href="#"><u>FEEDBACK</u></a></li>
@@ -42,22 +62,16 @@ const StaffFeedbackView = () => {
             <thead>
               <tr className="table-header">
                 <th>Parcel Order Number</th>
-                <th>Student Name</th>
-                <th>Roll Number</th>
-                <th>Rating (Out of 5)</th>
                 <th>Feedback</th>
               </tr>
             </thead>
             <tbody>
-              {parcels.map((parcel, index) => (
+              {data.map((parcel, index) => (
                 <tr key={index}>
                   <td className="clickable-parcel"
                   onClick={() => navigate("/staffparceldetails")}>
-                    {parcel.number}</td>
-                  <td>{parcel.student}</td>
-                  <td>{parcel.rollno}</td>
-                  <td>{parcel.rating}</td>
-                  <td className="feedback_info">{parcel.feedback}</td>
+                    {parcel.parcelOrderNumber}</td>
+                  <td>{parcel.description}</td>
                 </tr>
               ))}
             </tbody>

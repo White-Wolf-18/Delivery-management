@@ -1,9 +1,11 @@
 import "../Styles/StaffParcelDetails.css";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const StaffParcelDetails = () => {
     const navigate = useNavigate();
+    const {parcelOrderNumber} = useParams();
+    
     return (
         <div className="container">
       {/* Header Section */}
@@ -60,6 +62,7 @@ const StaffParcelDetails = () => {
                 <td><strong>OTP</strong></td>
                 <td>-</td>
               </tr>
+              
             </tbody>
           </table>
         </div>

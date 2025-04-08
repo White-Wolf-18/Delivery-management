@@ -2,11 +2,12 @@ import "../Styles/SignupPage.css";
 import React,{useState} from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios"
-const SignupPage = () => {
-    const [userType, setUserType] = useState("Student");
+
+const SignupPageStaff = () => {
+    const [userType, setUserType] = useState("Staff");
   
     const handleToggle = () => {
-      setUserType(userType === "Student" ? "Staff" : "Student");
+      setUserType(userType === "Staff" ? "Staff" : "Student");
     };
 
     const navigate = useNavigate();
@@ -14,19 +15,17 @@ const SignupPage = () => {
       name: "",
       password: "",
       email: "",
-      rollNumber: "",
-      course: "",
-      hostel: "",
+      id: "",
       mobileNumber: ""
     })
 
 
     async function handleForm(e){
       e.preventDefault()
-      const res = await axios.post("http://localhost:3001/student/register" , form);
+      const res = await axios.post("http://localhost:3001/owner/register" , form , {withCredentials: true});
       console.log(res)
       if(res.data === "You already have an account. Please login."){
-          navigate("/login")
+          navigate("/staffLogin")
       }
     }
 
@@ -47,16 +46,6 @@ const SignupPage = () => {
 
         {/* Toggle Switch */}
         <div className="toggle-container">
-                        <label className={userType === "Student" ? "active" : ""} style={{ marginRight: "10px"}}>
-                            <input
-                                type="radio"
-                                name="userType"
-                                value="Student"
-                                checked={userType === "Student"}
-                                onChange={() => setUserType("Student")}
-                            />
-                            Student             
-                        </label>
 
                         <label className={userType === "Staff" ? "active" : ""}>
                             <input
@@ -89,21 +78,9 @@ const SignupPage = () => {
 
         <input onChange={(e) => {
           setForm(prev => (
-            {...prev , rollNumber: e.target.value }
+            {...prev , id: e.target.value }
           ))
-        }} type="text" placeholder="Roll Number" className="input-box" />
-
-        <input onChange={(e) => {
-          setForm(prev => (
-            {...prev , course: e.target.value }
-          ))
-        }} type="text" placeholder="Course" className="input-box" />
-
-         <input onChange={(e) => {
-          setForm(prev => (
-            {...prev , hostel: e.target.value }
-          ))
-        }} type="text" placeholder="Hostel" className="input-box" />
+        }} type="text" placeholder="ID" className="input-box" />
 
         <input onChange={(e) => {
           setForm(prev => (
@@ -114,7 +91,7 @@ const SignupPage = () => {
         <button onClick={handleForm} className="signup-button">Signup</button>
 
         <p className="signup-text">
-          Already have an account? <a className="login-link" onClick={() => navigate("/login")}>Login</a>
+          Already have an account? <a className="login-link" onClick={() => navigate("/staffLogin")}>Login</a>
         </p>
 
       </div>
@@ -123,4 +100,4 @@ const SignupPage = () => {
   );
 };
 
-export default SignupPage;
+export default SignupPageStaff;

@@ -19,9 +19,7 @@ const AddParcelPage = () => {
       console.log(response.data);
       navigate("/home")
     }
-
-  
-  
+    
   return (
     <div className="container">
       {/* Header Section */}

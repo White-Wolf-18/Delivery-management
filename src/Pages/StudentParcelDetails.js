@@ -9,14 +9,16 @@ const StudentParcelDetails = () => {
     const {parcelOrderNumber} = useParams();
 
     useEffect(() => {
-      const dataFetch = async () => {
-          // console.log(parcelOrderNumber)
-          const res = await axios.post(`http://localhost:3001/parcel/getById` , {parcelOrderNumber}, {withCredentials: true}); 
-          console.log(res.data[0])
-          setData(res.data[0])
-      }
-      dataFetch();
-    } , [parcelOrderNumber])
+      console.log(parcelOrderNumber)
+    //   const dataFetch = async () => {
+    //     const res = await axios.get(`http://localhost:3001/parcel/getById/${parcelOrderNumber}`, {
+    //         withCredentials: true
+    //     });
+    //     console.log(res.data);
+    //     setData(res.data[0]); // Extract the first (and only) object
+    // }    
+    //   dataFetch();
+    } , [])
 
     return (
         <div className="container">
@@ -47,7 +49,7 @@ const StudentParcelDetails = () => {
               </tr>
               <tr>
                 <td><strong>Parcel order Number</strong></td>
-                <td>{data.parcelOrderNumber}</td>
+                <td>{data.description}</td>
               </tr>
               <tr>
                 <td><strong>Date of delivery</strong></td>

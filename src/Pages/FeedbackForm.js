@@ -5,12 +5,13 @@ import axios from "axios"
 const FeedbackForm = () => {
     const navigate = useNavigate();
     const [form , setForm] = useState({
-      description: ""
+      description: "",
+      parcelOrderNumber: ""
     });
 
     async function handleForm(){
-      const response = await axios.post("http://localhost:3001/feedback/createFeedback" , form);
-      navigate("/");
+      const response = await axios.post("http://localhost:3001/feedback/createFeedback" , form , {withCredentials: true});
+      navigate("/home");
     }
 
     return (
@@ -42,6 +43,14 @@ const FeedbackForm = () => {
               {...prev , description: e.target.value}
             ))
           }} className="complaint-description" placeholder="Give your feedback"></input><br></br>
+
+          <h4>Parcel Order Number</h4>
+          <input onChange={(e) => {
+            setForm(prev => (
+              {...prev , parcelOrderNumber: e.target.value}
+            ))
+          }} className="complaint-description" placeholder="Parcel Order Number"></input><br></br>
+
           <button className="place-complaint-button" onClick={handleForm}>Submit feedback</button>
         </div>
         </main>

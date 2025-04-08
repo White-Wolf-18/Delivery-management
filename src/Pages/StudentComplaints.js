@@ -87,8 +87,8 @@ const StudentComplaints = () => {
                   <td className="clickable-parcel"
                   onClick={() => navigate("/studentparceldetails/" + complaint.parcelOrderNumber)}>
                   {complaint.parcelOrderNumber}</td>
-                  <td className="complaint_info">{complaint.email}</td>
-                  <td>{complaint.resolved}</td>
+                  <td className="complaint_info">{complaint.description}</td>
+                  <td>{complaint.resolved ? "Resolved" : "Pending"}</td>
                 </tr>
               ))}
             </tbody>

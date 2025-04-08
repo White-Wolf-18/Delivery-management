@@ -4,8 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios"
 
 
-const LoginPage = () => {
-    const [userType, setUserType] = useState("Student");
+const LoginPageStaff = () => {
+    const [userType, setUserType] = useState("Staff");
     const navigate = useNavigate();
     const [form , setForm] = useState({
         email: "",
@@ -13,14 +13,14 @@ const LoginPage = () => {
     });
 
     async function handleForm(){
-        const res = await axios.post("http://localhost:3001/student/login" , form , {withCredentials: true});
+        const res = await axios.post("http://localhost:3001/owner/login" , form , {withCredentials: true});
         console.log(res)
         if(res.data === "User is not registered. Please register yourself"){
             alert("Register Yourself first");
             navigate("/signup")
         }
         if(res.data === "Logged in"){
-            navigate("/home")
+            navigate("/staff")
         }
     }
     
@@ -40,15 +40,16 @@ const LoginPage = () => {
 
                     {/* Toggle Radio Buttons */}
                     <div className="toggle-container">
-                        <label className={userType === "Student" ? "active" : ""} style={{ marginRight: "10px"}}>
+        
+                        <label className={userType === "Staff" ? "active" : ""}>
                             <input
                                 type="radio"
                                 name="userType"
-                                value="Student"
-                                checked={userType === "Student"}
-                                onChange={() => setUserType("Student")}
+                                value="Staff"
+                                checked={userType === "Staff"}
+                                onChange={() => setUserType("Staff")}
                             />
-                            Student             
+                            Staff
                         </label>
                     </div>
 
@@ -65,15 +66,13 @@ const LoginPage = () => {
                     }} type="password" placeholder="Enter your password" className="input-box" />
 
                     <button onClick={handleForm} className="login-button">Login</button>
-                    
-                    <Link to={"/staffLogin"}><div>Member of Staff ?</div></Link>
-                    
 
                     <p className="signup-text">
-                        Don't have an account? <a className="signup-link" onClick={() => navigate("/signup")}>Signup</a>
+                        Don't have an account? <a className="signup-link" onClick={() => navigate("/signupStaff")}>Signup</a>
                     </p>
 
-                  
+
+                    <Link to={"/login"}><div>Student ?</div></Link>
 
                     {/* Google Login */}
                     <button className="google-button">
@@ -87,4 +86,4 @@ const LoginPage = () => {
     );
 };
 
-export default LoginPage;
+export default LoginPageStaff;

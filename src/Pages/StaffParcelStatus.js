@@ -1,20 +1,24 @@
 import { useNavigate } from "react-router-dom";
 import "../Styles/StaffParcelStatus.css";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 const clearSearch = () => {
     document.getElementById("search-input").value = ""; // Clears the search input
   };  
 const StaffParcelStatus = () => {
-  const parcels = [
-    { number: "1231-1244-24134", name: "Alice", rollno: "B220001CS" },
-    { number: "4747-7874-6874", name: "Jonas", rollno: "B210987EC" },
-    { number: "9093-1430-0439", name: "Edward", rollno: "B230056EE" },
-    { number: "1653-4637-9325", name: "Lucy", rollno: "M230067CS" },
-    { number: "1788-9037-6735", name: "Harry", rollno: "B241023ME" },
-    { number: "1788-9037-6735", name: "Janice", rollno: "B220267CS" },
-    { number: "1788-9037-6735", name: "Alex", rollno: "M240145EC" },
-  ];
+
   const navigate = useNavigate();
+
+  const [data , setData] = useState([]);
+  useEffect(() => {
+    const func = async() => {
+      const res = await axios.get("http://localhost:3001/parcel/getAll" , {withCredentials: true});
+      setData(res.data);
+    }
+    func();
+  } , []);
+
+
   return (
     <div className="container">
       {/* Header Section */}
@@ -26,7 +30,7 @@ const StaffParcelStatus = () => {
         </div>
         <nav className="nav-bar">
           <ul className="nav-links">
-            <li><a href="/">HOME</a></li>
+            <li><a href="/staff">HOME</a></li>
             <li><a href="#"><u>PARCEL STATUS</u></a></li>
             <li><a className="cursor-hover" onClick={() => navigate("/staffcomplaints")}>COMPLAINTS</a></li>
             <li><a className="cursor-hover" onClick={() => navigate("/staff-feedbackview")}>FEEDBACK</a></li>
@@ -37,32 +41,32 @@ const StaffParcelStatus = () => {
       {/* Main Content Section */}
       <main className="content">
       <h3><i>Received parcels</i></h3>
-      <div className="search-container">
-        <span className="search-icon">🔍</span>
-        <input type="text" id="search-input" className="search-input" placeholder="Search" />
-        <span className="clear-icon" onClick={clearSearch}>❌</span>
-      </div>
+
         <div className="parcel-section">
           <table>
             <thead>
               <tr className="table-header">
                 <th>Parcel number</th>
-                <th>Student Name</th>
-                <th>Roll Number</th>
+                <th>Email</th>
+                <th>Received by Staff</th>
                 <th>Received by Student</th>
               </tr>
             </thead>
             <tbody>
-              {parcels.map((parcel, index) => (
+              {data.map((parcel, index) => (
                 <tr key={index}>
                   <td className="clickable-parcel"
                   onClick={() => navigate("/staffparceldetails")}>
-                    {parcel.number}</td>
-                  <td>{parcel.name}</td>
-                  <td>{parcel.rollno}</td>
+                    {parcel.parcelOrderNumber}</td>
+                  <td>{parcel.email}</td>
+                 
                   <td className="text-center">
                     <input type="checkbox" />
                   </td>
+                  <td className="text-center">
+                    <input type="checkbox" />
+                  </td>
+                  
                 </tr>
               ))}
             </tbody>

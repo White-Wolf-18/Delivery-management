@@ -1,9 +1,30 @@
 import "../Styles/StaffProfile.css";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import axios from "axios"
 const StaffProfile = () => {
   const navigate = useNavigate();
+  const [data , setData] = useState([]);
+
+
+  useEffect(function(){
+    try{
+      const dataFetch = async () => {
+        const userData = await axios.get("http://localhost:3001/student/", {
+          withCredentials: true 
+      });
+        console.log(userData)
+        setData(userData.data[0]);
+        console.log(userData.data)
+      }
+      dataFetch();
+    }catch(err){
+      console.log(err)
+    }
+  } , [])
+
+
+
   return (
     <div className="container">
       {/* Header Section */}
