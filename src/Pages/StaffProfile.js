@@ -68,7 +68,6 @@ const StaffProfile = () => {
             </tbody>
           </table>
         </div>
-        <button className="edit-button">Edit details</button>
       </main>
     </div>
   );
